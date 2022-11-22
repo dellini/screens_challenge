@@ -79,6 +79,11 @@ flutter:
       fonts:
         - asset: assets/fonts/Manrope-Regular.ttf
         - asset: assets/fonts/Manrope-Bold.ttf
+    - family: SF-Pro-Display
+      fonts:
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
+        - asset: assets/fonts/SF-Pro-Display-Semibold.otf
+        - asset: assets/fonts/SF-Pro-Display-Medium.otf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
