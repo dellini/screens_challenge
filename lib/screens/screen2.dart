@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:screens_challenge/screens/theme/consts.dart';
+import 'package:screens_challenge/screens/widgets/text_field.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({super.key});
@@ -9,44 +11,23 @@ class SecondScreen extends StatelessWidget {
       'Enter your phone number then we will send\nyou OTP sms to reset new password.';
   final String _buttonText = 'Send OTP';
 
-  static const _primaryColor = Color.fromARGB(255, 28, 18, 67);
-  static const _secondaryColor = Color.fromARGB(255, 162, 158, 182);
-  static const _outlineColor = Color.fromARGB(255, 100, 63, 219);
-  final _horizontalPadding = const EdgeInsets.symmetric(horizontal: 24);
-
-  final _primaryTextStyle = const TextStyle(
-    fontFamily: 'SF-Pro-Display',
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
-    letterSpacing: 1,
-    color: _primaryColor,
-  );
-
-  final _secondaryTextStyle = const TextStyle(
-    fontFamily: 'SF-Pro-Display',
-    fontWeight: FontWeight.w500,
-    fontSize: 14,
-    letterSpacing: 1,
-    color: _secondaryColor,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          Positioned(left: 18, top: 60, child: backButton()),
+          Positioned(left: 18, top: 60, child: _backButton()),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                content(),
+                _content(),
                 const SizedBox(height: 24),
-                phoneNumberInput(),
+                _phoneNumberInput(),
                 const SizedBox(height: 16),
-                bottomButton(),
+                _bottomButton(),
               ],
             ),
           ),
@@ -55,7 +36,7 @@ class SecondScreen extends StatelessWidget {
     );
   }
 
-  Widget backButton() {
+  Widget _backButton() {
     return Builder(builder: (context) {
       return Align(
         alignment: Alignment.topLeft,
@@ -71,7 +52,7 @@ class SecondScreen extends StatelessWidget {
     });
   }
 
-  Widget content() {
+  Widget _content() {
     return Builder(builder: (context) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,7 +66,7 @@ class SecondScreen extends StatelessWidget {
           Text(
             _title,
             textAlign: TextAlign.center,
-            style: _primaryTextStyle,
+            style: ThemeConsts.primaryTextStyle,
           ),
           const SizedBox(height: 16),
           Padding(
@@ -93,7 +74,7 @@ class SecondScreen extends StatelessWidget {
             child: Text(
               _subtitle,
               textAlign: TextAlign.center,
-              style: _secondaryTextStyle,
+              style: ThemeConsts.secondaryTextStyle,
             ),
           ),
         ],
@@ -101,71 +82,32 @@ class SecondScreen extends StatelessWidget {
     });
   }
 
-  Widget phoneNumberInput() {
-    return Builder(builder: (context) {
-      return SizedBox(
-        height: 52,
-        child: Padding(
-          padding: _horizontalPadding,
-          child: TextFormField(
-            keyboardType: const TextInputType.numberWithOptions(),
-            inputFormatters: [
-              FilteringTextInputFormatter(
-                RegExp('[0-9]'),
-                allow: true,
-              )
-            ],
-            cursorColor: _outlineColor,
-            cursorRadius: const Radius.circular(8),
-            cursorHeight: 20,
-            decoration: InputDecoration(
-              isDense: true,
-              enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: _outlineColor),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: _outlineColor),
-                borderRadius: BorderRadius.circular(16),
-              ),
-              prefixIcon: const Padding(
-                padding: EdgeInsets.only(
-                  left: 24,
-                  right: 16,
-                ),
-                child: Icon(
-                  Icons.phone_outlined,
-                  color: _primaryColor,
-                  size: 24,
-                ),
-              ),
-            ),
-          ),
+  Widget _phoneNumberInput() {
+    return CustomTextField(
+      keyboardType: const TextInputType.numberWithOptions(),
+      inputFormatters: [
+        FilteringTextInputFormatter(
+          RegExp('[0-9]'),
+          allow: true,
         ),
-      );
-    });
+      ],
+      borderSideColor: ThemeConsts.buttonsColor,
+      icon: const Icon(
+        Icons.phone_outlined,
+        color: ThemeConsts.primaryColor,
+        size: 24,
+      ),
+    );
   }
 
-  Widget bottomButton() {
+  Widget _bottomButton() {
     return Builder(builder: (context) {
       return Padding(
-        padding: _horizontalPadding,
+        padding: ThemeConsts.horizontalPadding,
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            fixedSize: const Size(double.infinity, 52),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16),
-            ),
-            backgroundColor: _outlineColor,
-          ),
+          style: ThemeConsts.buttonsStyle,
           onPressed: () {},
-          child: Text(
-            _buttonText,
-            style: _secondaryTextStyle.copyWith(
-              fontSize: 16,
-              color: Colors.white,
-            ),
-          ),
+          child: Text(_buttonText),
         ),
       );
     });
