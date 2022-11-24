@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:screens_challenge/screens/_index.dart';
-import 'package:screens_challenge/screens/screen3.dart';
-import 'package:screens_challenge/screens/theme/consts.dart';
+import 'package:screens_challenge/screens/screen4.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: ThemeConsts.backgroundColor,
-      systemNavigationBarColor: ThemeConsts.backgroundColor,
+      statusBarColor: FourthScreen.backgroundColor,
+      systemNavigationBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
     ),
   );
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ThirdScreen(),
+      home: FourthScreen(),
     );
   }
 }

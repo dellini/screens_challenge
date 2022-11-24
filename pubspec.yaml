@@ -84,6 +84,11 @@ flutter:
         - asset: assets/fonts/SF-Pro-Display-Bold.otf
         - asset: assets/fonts/SF-Pro-Display-Semibold.otf
         - asset: assets/fonts/SF-Pro-Display-Medium.otf
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
